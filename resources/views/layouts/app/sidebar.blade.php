@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-            <flux:sidebar.header>
-                <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
+    <body class="min-h-screen bg-gray-50">
+        <flux:sidebar sticky collapsible="mobile" class="border-e border-gray-200 bg-white shadow-sm">
+            <flux:sidebar.header class="border-b border-gray-100 pb-3">
+                <a href="{{ route('dashboard') }}" wire:navigate class="flex items-center gap-3 px-1 py-1">
+                    <img
+                        src="{{ asset('images/logo.webp') }}"
+                        alt="Sekolah Sentosa Jakarta"
+                        class="h-10 w-10 object-contain flex-shrink-0"
+                    />
+                    <div class="leading-tight">
+                        <p class="text-sm font-bold text-gray-900">SentosaQuiz</p>
+                        <p class="text-xs text-gray-400">Sekolah Sentosa Jakarta</p>
+                    </div>
+                </a>
                 <flux:sidebar.collapse class="lg:hidden" />
             </flux:sidebar.header>
 
@@ -20,22 +30,19 @@
 
             <flux:spacer />
 
-            <flux:sidebar.nav>
-                <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                    {{ __('Repository') }}
-                </flux:sidebar.item>
-
-                <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Documentation') }}
-                </flux:sidebar.item>
-            </flux:sidebar.nav>
-
-            <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
+            <div class="border-t border-gray-100 pt-3">
+                <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
+            </div>
         </flux:sidebar>
 
-        <!-- Mobile User Menu -->
-        <flux:header class="lg:hidden">
+        <!-- Mobile Header -->
+        <flux:header class="lg:hidden bg-white border-b border-gray-200">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+
+            <div class="flex items-center gap-2 ml-2">
+                <img src="{{ asset('images/logo.webp') }}" alt="Logo" class="h-7 w-7 object-contain" />
+                <span class="text-sm font-bold text-gray-900">SentosaQuiz</span>
+            </div>
 
             <flux:spacer />
 

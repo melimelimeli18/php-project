@@ -23,20 +23,22 @@
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
 
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
-    --color-accent-foreground: var(--color-white);
+    /* Sentosa brand red */
+    --color-primary: #C50303;
+    --color-primary-hover: #a50202;
+    --color-primary-light: #fde8e8;
+
+    /* Accent maps to red brand color */
+    --color-accent: #C50303;
+    --color-accent-content: #C50303;
+    --color-accent-foreground: #ffffff;
 }
 
-@layer theme {
-    .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
-    }
-}
-
+/* Force light mode – no dark overrides */
 @layer base {
+    html {
+        color-scheme: light;
+    }
 
     *,
     ::after,
@@ -52,15 +54,50 @@
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+    @apply outline-hidden ring-2 ring-offset-2;
+    ring-color: var(--color-primary);
 }
 
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
+/* ── Student portal light theme utilities ── */
+.sentosa-nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.sentosa-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 1rem;
+}
+
+.sentosa-card:hover {
+    border-color: #C50303;
+    box-shadow: 0 4px 20px rgba(197, 3, 3, 0.08);
+}
+
+.sentosa-badge {
+    color: #C50303;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.sentosa-btn-primary {
+    background-color: #C50303;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: background-color 0.15s;
+}
+
+.sentosa-btn-primary:hover {
+    background-color: #a50202;
+}
