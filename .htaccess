@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^(.*)$ /sentosa-quiz/public/$1 [L]
